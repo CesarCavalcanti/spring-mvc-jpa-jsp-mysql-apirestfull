@@ -22,9 +22,6 @@ public class Endereco {
     private String cidade;
     @Column(name = "uf")
     private String uf;
-    @Column(name = "populacao")
-    private String populacao;
-
 
     public Integer getId() {
         return id;
@@ -80,14 +77,6 @@ public class Endereco {
 
     public void setUf(String uf) {
         this.uf = uf;
-    }
-
-    public String getPopulacao() {
-        return populacao;
-    }
-
-    public void setPopulacao(String populacao) {
-        this.populacao = populacao;
     }
 
     public Endereco() {

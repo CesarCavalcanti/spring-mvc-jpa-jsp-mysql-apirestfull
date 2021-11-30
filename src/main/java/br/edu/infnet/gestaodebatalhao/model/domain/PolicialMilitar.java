@@ -16,12 +16,9 @@ public class PolicialMilitar {
     private String matricula;
     @Column (name = "celular")
     private String celular;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn (name = "idEndereco")
     private Endereco endereco;
-    @ManyToOne
-    @JoinColumn (name = "idUsuario")
-    private Usuario usuario;
 
     public PolicialMilitar() {
     }
@@ -57,7 +54,6 @@ public class PolicialMilitar {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-
     public Endereco getEndereco() {
         return endereco;
     }
@@ -65,4 +61,5 @@ public class PolicialMilitar {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
 }

@@ -9,13 +9,19 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "email")
     private String email;
+    @Column(name = "senha")
     private String senha;
+    @Column(name = "admin")
+    private Boolean admin;
     @OneToMany (cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn (name = "idUsuario")
-    private List<PolicialMilitar> policiais;
+    private List<Oficial> oficiais;
 
     public Usuario() {
     }
@@ -52,11 +58,19 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public List<PolicialMilitar> getPoliciais() {
-        return policiais;
+    public List<Oficial> getOficiais() {
+        return oficiais;
     }
 
-    public void setPoliciais(List<PolicialMilitar> policiais) {
-        this.policiais = policiais;
+    public void setPoliciais(List<Oficial> oficiais) {
+        this.oficiais = oficiais;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 }

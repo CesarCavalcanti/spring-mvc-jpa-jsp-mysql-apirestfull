@@ -1,9 +1,6 @@
 package br.edu.infnet.gestaodebatalhao.model.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "oficial")
@@ -20,8 +17,23 @@ public class Oficial extends PolicialMilitar{
     private String companhia;
     @Column (name = "funcao")
     private String funcao;
+    @ManyToOne
+    @JoinColumn(name = "idBatalhao")
+    private Batalhao batalhao;
+    @ManyToOne
+    @JoinColumn (name = "idUsuario")
+    private Usuario usuario;
+
 
     public Oficial() {
+    }
+
+    public Batalhao getBatalhao() {
+        return batalhao;
+    }
+
+    public void setBatalhao(Batalhao batalhao) {
+        this.batalhao = batalhao;
     }
 
     public String getPosto() {
@@ -63,4 +75,14 @@ public class Oficial extends PolicialMilitar{
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
 }

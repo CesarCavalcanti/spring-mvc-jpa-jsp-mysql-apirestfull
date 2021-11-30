@@ -1,8 +1,6 @@
 package br.edu.infnet.gestaodebatalhao.model.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "reserva")
@@ -14,8 +12,19 @@ public class Reserva extends  PolicialMilitar{
     private String lotacao;
     @Column (name = "matriculaEspecial")
     private String matriculaEspecial;
+    @ManyToOne
+    @JoinColumn(name = "idBatalhao")
+    private Batalhao batalhao;
 
     public Reserva() {
+    }
+
+    public Batalhao getBatalhao() {
+        return batalhao;
+    }
+
+    public void setBatalhao(Batalhao batalhao) {
+        this.batalhao = batalhao;
     }
 
     public String getIdade() {
