@@ -23,6 +23,15 @@ public class Endereco {
     @Column(name = "uf")
     private String uf;
 
+    public Endereco(String cep, String rua, String complemento, String bairro, String cidade, String uf) {
+        this.cep = cep;
+        this.rua = rua;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+    }
+
     public Integer getId() {
         return id;
     }

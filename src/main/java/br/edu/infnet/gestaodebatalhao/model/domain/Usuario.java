@@ -13,18 +13,19 @@ public class Usuario {
     private Integer id;
     @Column(name = "nome")
     private String nome;
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "senha")
     private String senha;
     @Column(name = "admin")
     private Boolean admin;
     @OneToMany (cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn (name = "idUsuario")
-    private List<Oficial> oficiais;
+    @JoinColumn(name = "idUsuario")
+    private List<PolicialMilitar> policiais;
 
     public Usuario() {
     }
+
 
     public Integer getId() {
         return id;
@@ -58,12 +59,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public List<Oficial> getOficiais() {
-        return oficiais;
+    public List<PolicialMilitar> getPoliciais() {
+        return policiais;
     }
 
-    public void setPoliciais(List<Oficial> oficiais) {
-        this.oficiais = oficiais;
+    public void setPoliciais(List<PolicialMilitar> policiais) {
+        this.policiais = policiais;
     }
 
     public Boolean getAdmin() {

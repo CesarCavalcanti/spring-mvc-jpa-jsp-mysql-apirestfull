@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Cadastro de oficiais</title>
+    <title>Gestao BPM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,97 +82,52 @@
 
     </script>
 
+    <style type="text/css">
+        .checkbox-grid li {
+            display: block;
+            float: left;
+            width: 25%;
+        }
+    </style>
 </head>
 <body>
 
-    <c:import url="/WEB-INF/jsp/cabecalho.jsp"/>
+<c:import url="/WEB-INF/jsp/cabecalho.jsp"/>
+<c:set var="botao" value=""/>
     <div class="container">
-        <form action="/oficial/incluir" method="post">
+        <form action="/batalhao/incluir" method="post">
 
             <div class="form-group">
                 <label style = "font-size:x-large;" >Nome:</label>
-                <input type="text" class="form-control"  placeholder="Entre com seu nome" name="nome" value="Cesar de sena" size="50">
+                <input type="text" class="form-control"  placeholder="Entre com o nome do bpm" name="nome" value="Mathias de albuquerque" size="50">
             </div>
 
             <div class="form-group">
-                <label style = "font-size:x-large;">Matricula:</label>
-                <input type="text" class="form-control"  placeholder="Entre com sua matricula" name="matricula" value="1235578" size="30">
-            </div>
-
-            <div class="form-group">
-                <label style = "font-size:x-large;">Celular:</label>
-                <input type="text" class="form-control"  placeholder="Entre com seu número" name="celular" value="81996924416" size="30">
-            </div>
-
-            <div class="form-group">
-                <label>Patente:</label>
-                <select class="form-control" name="patente">
-                    <option value="2 Tenente">2º Tenente</option>
-                    <option selected value="1 Tenente">1º Tenente</option>
-                    <option value="Capitao">Capitao</option>
-                    <option value="Major">Major</option>
-                    <option value="Ten. Coronel">Ten. Coronel</option>
-                    <option value="Coronel">Coronel</option>
+                <label>Area:</label>
+                <select class="form-control" name="area">
+                    <option value="25BPM">25BPM</option>
+                    <option selected value="1BPM">1BPM</option>
+                    <option value="11BPM">11BPM</option>
+                    <option value="12BPM">12BPM</option>
+                    <option value="16BPM">16BPM</option>
+                    <option value="20BPM">20BPM</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Quadro:</label>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" name="quadro" class="form-check-input" value="QOPM"> QOPM
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" name="quadro" class="form-check-input" value="QOAPM"> QOAPM
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" name="quadro" class="form-check-input" value="QOFPM"> QOFPM
-                    </label>
-                </div>
+                <c:if test="${not empty policiais}">
+                    <label>Policiais disponíveis:</label>
+                    <c:forEach var="p" items="${policiais}">
+                        <ul class="checkbox-grid">
+                            <li><input type="checkbox" name="policiaisIds" value="${p.id}" /><label>${p.patente} ${p.nome}</label></li>
+                        </ul>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${empty policiais}">
+                    <label>Não existem policiais cadastrados!!!</label><br>
+                    <a href="/oficial">Cadastrar Oficial</a><br><a href="/praca">Cadastrar Praca</a><br><a href="/reserva">Cadastrar Reserva</a>
+                    <c:set var="botao" value="disabled"/>
+                </c:if>
             </div>
-            <div class="form-group">
-                <label>Secao:</label>
-                <select class="form-control" name="secao">
-                    <option value="Corpo de Alunos">Corpo de Alunos</option>
-                    <option selected value="Divisao de ensino">Divisao de ensino</option>
-                    <option value="Divisao administrativa">Divisao administrativa</option>
-                    <option value="Comando">Comando</option>
-                    <option value="Smap">Smap</option>
-                    <option value="Armaria">Armaria</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Companhia:</label>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" name="companhia" class="form-check-input" value="1"> 1ª Companhia
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" name="companhia" class="form-check-input" value="2"> 2ª Companhia
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" name="companhia" class="form-check-input" value="3"> 3ª Companhia
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Funcao:</label>
-                <select class="form-control" name="funcao">
-                    <option value="Comandante">Comandante</option>
-                    <option selected value="Sub-Comandante">Sub-comandante</option>
-                    <option value="Chefe">Chefe</option>
-                    <option value="Sub-Chefe">Sub Chefe</option>
-                </select>
-            </div>
-
-
             <div class="form-group">
                 <label >CEP:</label>
                 <input type="text" class="form-control" value=""  placeholder="Seu cep" name="cep" id="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);"/>
@@ -198,7 +153,7 @@
                 <input type="text" class="form-control"  placeholder="UF" name="uf" id="uf" size="2">
             </div>
 
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" ${botao}>Cadastrar</button>
         </form>
     </div>'
 

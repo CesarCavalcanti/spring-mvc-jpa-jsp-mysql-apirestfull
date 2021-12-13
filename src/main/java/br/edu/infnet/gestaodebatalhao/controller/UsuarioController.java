@@ -23,8 +23,18 @@ public class UsuarioController {
     @PostMapping(value = "/usuario/incluir")
     public String incluir(Model model, Usuario usuario) {
         model.addAttribute("nome",usuario.getNome());
-        usuarioService.incluir(usuario);
+        try {
+            usuarioService.incluir(usuario);
+        }catch (Exception e){
+            model.addAttribute("Erro", "Email já utilizado");
+        }
+
         return "index";
+    }
+
+    @GetMapping(value = "usuario/erro")
+    public String telaErro(Model model){
+        return "usuario/erro";
     }
 
     @GetMapping(value = "/usuarios")

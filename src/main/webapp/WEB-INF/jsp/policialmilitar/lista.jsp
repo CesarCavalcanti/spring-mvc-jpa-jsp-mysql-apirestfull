@@ -15,16 +15,11 @@
 
 <c:import url="/WEB-INF/jsp/cabecalho.jsp"/>
 <div class="container">
-    <c:if test="${not empty praca}">
-        <div class="alert alert-success">
-            <strong>Confirmação!</strong> ${praca.patente} ${praca.nome} foi cadastrado com sucesso
-        </div>
 
-    </c:if>
-    <c:if test="${not empty lista}">
+    <c:if test="${not empty policiais}">
 
         <h4>
-            Pracas cadastrados no batalhão: (${lista.size()}):
+            Policiais cadastrados: (${policiais.size()}):
         </h4>
         <table class="table">
             <thead>
@@ -34,26 +29,20 @@
                 <th>Matricula</th>
                 <th>Patente</th>
                 <th>Batalhao</th>
-                <th>Secao</th>
-                <th>Companhia</th>
-                <th>Cargo</th>
                 <th>Usuario</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="c" items="${lista}">
+            <c:forEach var="c" items="${policiais}">
                 <tr>
                     <td>${c.id}</td>
                     <td>${c.nome}</td>
                     <td>${c.matricula}</td>
                     <td>${c.patente}</td>
                     <td>${c.batalhao.area}</td>
-                    <td>${c.secao}</td>
-                    <td>${c.companhia}</td>
-                    <td>${c.cargo}</td>
                     <td>${c.usuario.nome}</td>
                     <c:if test="${user.admin}">
-                        <td><a href="/praca/${c.id}/excluir">Excluir</a></td>
+                        <td><a href="/policial/${c.id}/excluir">Excluir</a></td>
                     </c:if>
                 </tr>
             </c:forEach>
@@ -61,13 +50,13 @@
         </table>
 
     </c:if>
-    <c:if test="${empty lista}">
+    <c:if test="${empty policiais}">
         <div class="alert alert-info">
-            <strong>Opa...</strong> Não existe pracas cadastrados.
+            <strong>Opa...</strong> Não existe policiais cadastrados.
         </div>
     </c:if>
     <c:if test="${user.admin}">
-        <a href="/praca">Cadastrar Praca</a>
+        <a href="/oficial">Cadastrar Oficial</a><br><a href="/praca">Cadastrar Praca</a><br><a href="/reserva">Cadastrar Reserva</a>
     </c:if>
 </div>
 </body>

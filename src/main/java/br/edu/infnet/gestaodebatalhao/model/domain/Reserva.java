@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "reserva")
+@PrimaryKeyJoinColumn(name = "id")
 public class Reserva extends  PolicialMilitar{
 
     @Column(name = "idaded")
@@ -12,19 +13,14 @@ public class Reserva extends  PolicialMilitar{
     private String lotacao;
     @Column (name = "matriculaEspecial")
     private String matriculaEspecial;
-    @ManyToOne
-    @JoinColumn(name = "idBatalhao")
-    private Batalhao batalhao;
-
     public Reserva() {
     }
 
-    public Batalhao getBatalhao() {
-        return batalhao;
-    }
-
-    public void setBatalhao(Batalhao batalhao) {
-        this.batalhao = batalhao;
+    public Reserva( String nome, String patente, String matricula, String celular, String idade, String lotacao, String matriculaEspecial) {
+        super(nome, patente, matricula, celular);
+        this.idade = idade;
+        this.lotacao = lotacao;
+        this.matriculaEspecial = matriculaEspecial;
     }
 
     public String getIdade() {

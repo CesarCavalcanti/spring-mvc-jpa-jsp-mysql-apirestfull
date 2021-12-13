@@ -13,12 +13,11 @@ public class Batalhao {
     private Integer id;
     @Column (name = "nome")
     private String nome;
-    @OneToMany
-    private List<Oficial> oficiais;
-    @OneToMany
-    private List<Praca> pracas;
-    @OneToMany
-    private List<Reserva> reserva;
+    @Column (name = "area", unique = true)
+    private String area;
+    @OneToMany(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "idBatalhao")
+    private List<PolicialMilitar> policiais;
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn (name = "endereco_id")
     private Endereco endereco;
@@ -26,8 +25,26 @@ public class Batalhao {
     public Batalhao() {
     }
 
+    public Batalhao( String nome, String area) {
+
+        this.nome = nome;
+        this.area = area;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
     public Integer getId() {
         return id;
+    }
+
+    public List<PolicialMilitar> getPoliciais() {
+        return policiais;
     }
 
     public void setId(Integer id) {
@@ -42,35 +59,15 @@ public class Batalhao {
         this.nome = nome;
     }
 
-    public List<Oficial> getOficiais() {
-        return oficiais;
-    }
-
-    public void setOficiais(List<Oficial> oficiais) {
-        this.oficiais = oficiais;
-    }
-
-    public List<Praca> getPracas() {
-        return pracas;
-    }
-
-    public void setPracas(List<Praca> pracas) {
-        this.pracas = pracas;
-    }
-
-    public List<Reserva> getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(List<Reserva> reserva) {
-        this.reserva = reserva;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public void setPoliciais(List<PolicialMilitar> policiais) {
+        this.policiais = policiais;
     }
 }

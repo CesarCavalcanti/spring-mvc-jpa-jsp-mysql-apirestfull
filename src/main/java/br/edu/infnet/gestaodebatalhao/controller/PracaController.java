@@ -2,8 +2,10 @@ package br.edu.infnet.gestaodebatalhao.controller;
 
 import br.edu.infnet.gestaodebatalhao.model.domain.Endereco;
 import br.edu.infnet.gestaodebatalhao.model.domain.Oficial;
+import br.edu.infnet.gestaodebatalhao.model.domain.Praca;
 import br.edu.infnet.gestaodebatalhao.model.domain.Usuario;
 import br.edu.infnet.gestaodebatalhao.model.service.OficialService;
+import br.edu.infnet.gestaodebatalhao.model.service.PracaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,48 +15,47 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
-public class OficialController {
-    
+public class PracaController {
+
     @Autowired
-    private OficialService oficialService;
+    private PracaService pracaService;
 
-    @GetMapping(value = "/oficial")
+    @GetMapping(value = "/praca")
     public String telaCadastro() {
-        return "oficial/cadastro";
+        return "praca/cadastro";
     }
 
-    @GetMapping (value = "/oficiais")
+    @GetMapping (value = "/pracas")
     public String telaLista(Model model) {
-        model.addAttribute("lista", oficialService.obterLista());
-        return "oficial/lista";
-    }
-    @GetMapping(value = "oficial/erro")
-    public String telaErro(Model model){
-        return "oficial/erro";
+        model.addAttribute("lista", pracaService.obterLista());
+        return "praca/lista";
     }
 
-    @PostMapping(value = "/oficial/incluir")
-    public String incluir(Model model, Oficial oficial, @SessionAttribute("user")Usuario usuario, Endereco endereco) {
+    @PostMapping(value = "/praca/incluir")
+    public String incluir(Model model, Praca praca, @SessionAttribute("user")Usuario usuario, Endereco endereco) {
 
-        oficial.setUsuario(usuario);
+        praca.setUsuario(usuario);
         try {
-            oficialService.incluir(oficial,endereco);
+            pracaService.incluir(praca,endereco);
         }catch (Exception e){
-            model.addAttribute("mensagem", "Erro! Matricula já utilizada pela instituição");
+            model.addAttribute("mensagem", "Erro, Matricula ja utilizada pela instituição");
             return telaErro(model);
         }
 
-
-        model.addAttribute("oficial",oficial);
+        model.addAttribute("praca",praca);
         return telaLista(model);
     }
 
-    @GetMapping (value = "/oficial/{id}/excluir")
+    @GetMapping(value = "praca/erro")
+    public String telaErro(Model model){
+        return "praca/erro";
+    }
+
+    @GetMapping (value = "/praca/{id}/excluir")
     public String excluir (Model model,@PathVariable Integer id) {
 
-        oficialService.excluir(id);
+        pracaService.excluir(id);
 
-        return "redirect:/oficiais";
+        return "redirect:/pracas";
     }
-    
 }

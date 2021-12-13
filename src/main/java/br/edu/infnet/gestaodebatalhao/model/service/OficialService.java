@@ -6,6 +6,7 @@ import br.edu.infnet.gestaodebatalhao.model.domain.Usuario;
 import br.edu.infnet.gestaodebatalhao.model.repository.EnderecoRepository;
 import br.edu.infnet.gestaodebatalhao.model.repository.OficialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,16 +16,10 @@ public class OficialService {
 
     @Autowired
     private OficialRepository oficialRepository;
-    @Autowired
-    private EnderecoRepository enderecoRepository;
 
     public List<Oficial> obterLista(){
 
-        return (List<Oficial>)oficialRepository.findAll();
-    }
-
-    public List<Oficial> obterLista(Usuario usuario){
-        return (List<Oficial>)oficialRepository.obterLista(usuario.getId());
+        return oficialRepository.findAllByIdNotNullOrderByPatenteAsc();
     }
 
     public void incluir (Oficial oficial, Endereco endereco) {
@@ -34,5 +29,9 @@ public class OficialService {
 
     public void excluir (Integer id) {
         oficialRepository.deleteById(id);
+    }
+
+    public long contar (){
+        return oficialRepository.count();
     }
 }
