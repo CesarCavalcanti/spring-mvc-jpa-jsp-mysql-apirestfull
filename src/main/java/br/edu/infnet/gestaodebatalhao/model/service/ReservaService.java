@@ -14,7 +14,7 @@ public class ReservaService {
     private ReservaRepository reservaRepository;
 
     public List<Reserva> obterLista(){
-        return reservaRepository.findAllByIdNotNullOrderByPatente();
+        return reservaRepository.findAllByIdNotNullOrderByCompanhiaAsc();
     }
 
     public void incluir (Reserva reserva, Endereco endereco) {

@@ -22,7 +22,7 @@ public class PracaService {
 
 
     public List<Praca> obterLista(){
-        return pracaRepository.findAllByIdNotNullOrderByPatente();
+        return pracaRepository.findAllByIdNotNullOrderByCompanhiaAsc();
     }
 
     public void incluir (Praca praca, Endereco endereco) {

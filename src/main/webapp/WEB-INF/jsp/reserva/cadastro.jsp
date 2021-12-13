@@ -90,21 +90,21 @@
 
         <div class="form-group">
             <label style = "font-size:x-large;" >Nome:</label>
-            <input type="text" class="form-control"  placeholder="Entre com seu nome" name="nome" value="Cesar de sena" size="50">
+            <input type="text" class="form-control"  placeholder="Entre com seu nome" name="nome" value="Joao da doze" size="50">
         </div>
 
         <div class="form-group">
             <label style = "font-size:x-large;">Matricula:</label>
-            <input type="text" class="form-control"  placeholder="Entre com sua matricula" name="matricula" value="1235578" size="30">
+            <input type="text" class="form-control"  placeholder="Entre com sua matricula" name="matricula" value="1111111" size="30">
         </div>
 
         <div class="form-group">
             <label style = "font-size:x-large;">Celular:</label>
-            <input type="text" class="form-control"  placeholder="Entre com seu número" name="celular" value="81996924416" size="30">
+            <input type="text" class="form-control"  placeholder="Entre com seu número" name="celular" value="888888888" size="30">
         </div>
         <div class="form-group">
             <label style = "font-size:x-large;">Idade:</label>
-            <input type="text" class="form-control"  placeholder="Entre com sua idade" name="idade" value="65" size="30">
+            <input type="text" class="form-control"  placeholder="Entre com sua idade" name="idade" value="70" size="30">
         </div>
 
         <div class="form-group">

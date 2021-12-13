@@ -3,7 +3,6 @@ package br.edu.infnet.gestaodebatalhao.model.service;
 import br.edu.infnet.gestaodebatalhao.model.domain.Usuario;
 import br.edu.infnet.gestaodebatalhao.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -90,25 +90,25 @@
 
         <div class="form-group">
             <label style = "font-size:x-large;" >Nome:</label>
-            <input type="text" class="form-control"  placeholder="Entre com seu nome" name="nome" value="Cesar de sena" size="50">
+            <input type="text" class="form-control"  placeholder="Entre com seu nome" name="nome" value="Zé dos 3oitao" size="50">
         </div>
 
         <div class="form-group">
             <label style = "font-size:x-large;">Matricula:</label>
-            <input type="text" class="form-control"  placeholder="Entre com sua matricula" name="matricula" value="1235578" size="30">
+            <input type="text" class="form-control"  placeholder="Entre com sua matricula" name="matricula" value="22222222" size="30">
         </div>
 
         <div class="form-group">
             <label style = "font-size:x-large;">Celular:</label>
-            <input type="text" class="form-control"  placeholder="Entre com seu número" name="celular" value="81996924416" size="30">
+            <input type="text" class="form-control"  placeholder="Entre com seu número" name="celular" value="33333333333333" size="30">
         </div>
 
         <div class="form-group">
             <label>Patente:</label>
             <select class="form-control" name="patente">
                 <option value="Soldado">Soldado</option>
-                <option selected value="Cabo">Cabo</option>
-                <option value="3 Sargento">3º Sargento</option>
+                <option value="Cabo">Cabo</option>
+                <option selected value="3 Sargento">3º Sargento</option>
                 <option value="2 Sargento">2º Sargento</option>
                 <option value="1 Sargento">1º Sargento</option>
                 <option value="Sub Tenente">Sub Tenente</option>

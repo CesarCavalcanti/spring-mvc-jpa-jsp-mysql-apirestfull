@@ -14,11 +14,11 @@ public class PolicialMilitarService {
     private PolicialMilitarRepository policialMilitarRepository;
 
     public List<PolicialMilitar> obterLista(Integer id){
-        return policialMilitarRepository.findAllByBatalhaoIdOrderByPatente(id);
+        return policialMilitarRepository.findAllByBatalhaoIdOrderByCompanhiaAsc(id);
     }
 
     public List<PolicialMilitar> obterLista( ){
-        return policialMilitarRepository.findAllByIdNotNullOrderByPatente();
+        return policialMilitarRepository.findAllByIdNotNullOrderByCompanhiaAsc();
     }
 
     public void excluir (Integer id) {

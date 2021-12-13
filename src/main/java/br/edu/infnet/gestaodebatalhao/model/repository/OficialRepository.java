@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface OficialRepository extends CrudRepository<Oficial,Integer> {
 
-    List<Oficial> findAllByIdNotNullOrderByPatenteAsc();
+    List<Oficial> findAllByIdNotNullOrderByCompanhiaAsc();
 }

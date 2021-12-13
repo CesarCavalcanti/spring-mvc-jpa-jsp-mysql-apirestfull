@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ReservaRepository extends CrudRepository<Reserva,Integer> {
-    List<Reserva> findAllByIdNotNullOrderByPatente();
+    List<Reserva> findAllByIdNotNullOrderByCompanhiaAsc();
 }

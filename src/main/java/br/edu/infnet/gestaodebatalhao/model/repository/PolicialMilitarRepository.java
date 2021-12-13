@@ -12,7 +12,7 @@ import java.util.List;
 public interface PolicialMilitarRepository extends CrudRepository<PolicialMilitar,Integer> {
 
 
-    List<PolicialMilitar> findAllByIdNotNullOrderByPatente();
+    List<PolicialMilitar> findAllByIdNotNullOrderByCompanhiaAsc();
 
-    List<PolicialMilitar> findAllByBatalhaoIdOrderByPatente(Integer id);
+    List<PolicialMilitar> findAllByBatalhaoIdOrderByCompanhiaAsc(Integer id);
 }

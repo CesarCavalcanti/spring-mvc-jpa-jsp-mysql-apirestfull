@@ -19,7 +19,7 @@ public class OficialService {
 
     public List<Oficial> obterLista(){
 
-        return oficialRepository.findAllByIdNotNullOrderByPatenteAsc();
+        return oficialRepository.findAllByIdNotNullOrderByCompanhiaAsc();
     }
 
     public void incluir (Oficial oficial, Endereco endereco) {
